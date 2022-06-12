@@ -1,0 +1,218 @@
+.login-logo {
+    width: 200px;
+}
+
+.auth-box {
+    width: 500px !important;
+}
+
+.btn-login,
+.btn-login:hover,
+.btn-login:focus {
+    background: var(--mainColor);
+    border: var(--mainColor);
+}
+
+.brand {
+    width: 177px;
+}
+
+.login-failed-message {
+    color: rgb(255, 0, 0);
+    font-size: 1.3rem;
+    float: left;
+    margin: .5rem 0 1rem 0;
+}
+
+.change-periode {
+    padding-left: .5rem !important;
+    padding-right: .5rem !important;
+    border-radius: 3px;
+}
+
+.change-periode.active {
+    background: var(--mainColor) !important;
+    color: #fff;
+}
+
+.loading {
+    background: rgb(219, 219, 219);
+    color: rgb(219, 219, 219);
+    padding-right: 10px;
+}
+
+.loader {
+    text-align: center;
+    padding: 3.5rem 0;
+}
+
+.loader4 {
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+    padding: 0px;
+    border-radius: 100%;
+    border: 5px solid;
+    border-top-color: var(--mainColor);
+    border-bottom-color: rgb(225, 225, 225);
+    border-left-color: var(--mainColor);
+    border-right-color: rgb(225, 225, 225);
+    -webkit-animation: loader4 1s ease-in-out infinite;
+    animation: loader4 1s ease-in-out infinite;
+}
+
+@keyframes loader4 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes loader4 {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.btn-table-action {
+    border: none;
+    border-radius: 3px;
+    padding: .3rem .6rem;
+    color: #fff;
+    transition: .2s;
+}
+
+.btn-table-action.acc {
+    background: #40b927;
+}
+
+.btn-table-action.edit {
+    background: #ffaa00;
+}
+
+.btn-table-action.delete {
+    background: #c91d1d;
+}
+
+.btn-table-action[disabled="disabled"] {
+    cursor: not-allowed;
+    opacity: .5;
+}
+
+.btn-table-action.btn-hide {
+    visibility: hidden;
+    opacity: 0;
+}
+
+#data-kriteria tr td:nth-child(1):hover {
+    color: #00a0f0;
+}
+
+#data-kriteria tr td:nth-child(1).td-active {
+    color: #00a0f0;
+}
+
+#btn-add-kriteria {
+    transition: .2s !important;
+}
+
+#btn-add-kriteria.btn-hide {
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
+#btn-add-sub-kriteria.btn-hide {
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
+.date-picker {
+    background: #fff !important;
+}
+
+#periode-penilaian {
+    background: #fff !important;
+}
+
+/* #penilaian-karyawan-loader {
+    display: none;
+} */
+
+#table-penilaian {
+    display: none;
+}
+
+#table-normalisasi-penilaian {
+    display: none;
+}
+
+#table-hasil-penilaian {
+    display: none;
+}
+
+#btn-print-hasil {
+    padding: 0.3rem 1rem;
+    border: 1px solid #9da0a0;
+    border-radius: 4px;
+    opacity: .7;
+    transition: .3s;
+    display: none;
+}
+
+#btn-print-hasil:hover {
+    opacity: 1;
+}
+
+@media print {
+    .no-print {
+        display: none;
+    }
+}
+
+.yearpicker:read-only {
+    background-color: #fff !important;
+}
+
+.asset-action {
+    display: flex;
+    justify-content: space-between;
+}
+
+.asset-action button {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn-add-vendor {
+    color: #fff !important;
+    background-color: #00a0f0 !important;
+    padding: 5px 10px !important;
+    border-radius: 3px !important;
+}
+
+#asset .status {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+}
+
+#asset .status.pengajuan {
+    color: #ffaa00;
+}
+
+#asset .status.diterima {
+    color: #40b927;
+}
+
+#asset .status.ditolak {
+    color: #c91d1d;
+}
