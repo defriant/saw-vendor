@@ -232,6 +232,18 @@ class WebController extends Controller
         ]);
     }
 
+    public function pengadaan_asset_pengajuan(Request $request)
+    {
+        Asset::where('periode', $request->periode)->where('semester', $request->semester)->update([
+            "status" => "pengajuan"
+        ]);
+
+        return response()->json([
+            "response" => "success",
+            "message" => "Pengadaan aset berhasil di ajukan"
+        ]);
+    }
+
     // Ambil data kriteria
     public function get_kriteria($periode, $semester)
     {

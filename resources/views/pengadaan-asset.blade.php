@@ -147,4 +147,19 @@
     </div>
 </div>
 
+<div class="modal fade" id="modalPengajuan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h4 class="text-center" style="margin-top: 3rem">Ajukan pengadaan aset ?</h4>
+                <input type="hidden" id="delete-id-vendor">
+                <div style="margin-top: 5rem; text-align: center">
+                    <button type="button" class="btn btn-primary" id="btn-ajukan-pengadaan-aset">Ajukan</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection

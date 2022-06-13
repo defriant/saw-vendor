@@ -31,29 +31,11 @@
                     <span class="input-group-btn no-print"><button class="btn btn-primary" type="button" id="search-hasil"><i class="fas fa-search"></i></button></span>
                 </div> --}}
                 <br>
-                <div class="loader" id="hasil-loader">
-                    <i class="fas fa-ban" style="font-size: 5rem; opacity: .5"></i>
-                    <h5 style="margin-top: 2.5rem; opacity: .75">Belum ada data yang dipilih</h5>
-                </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-4" style="margin-top: 3rem; margin-bottom: 3rem">
-                        <table class="table table-bordered" id="table-hasil-penilaian">
-                            <thead>
-                                <tr>
-                                    <th style="width: 15%">No.</th>
-                                    <th>Karyawan</th>
-                                    <th>Nilai</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody-hasil">
-                                
-                            </tbody>
-                        </table>
-                    </div>
-                    {{-- <br> --}}
-                    <div class="col-md-8">
-                        <canvas id="hasil-chart"></canvas>
+                <div id="penilaian">
+                    <div class="loader" id="hasil-loader">
+                        <i class="fas fa-ban" style="font-size: 5rem; opacity: .5"></i>
+                        <h5 style="margin-top: 2.5rem; opacity: .75">Belum ada data yang dipilih</h5>
                     </div>
                 </div>
             </div>

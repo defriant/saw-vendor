@@ -30,10 +30,16 @@ function getAsset(params) {
     }).then(res => {
         let assetHtml, actions, dataAsset
         if (res.status == null || res.status == "pending") {
-            actions = `<div class="asset-action">
+            if (res.status == null) {
+                actions = `<div class="asset-action">
                             <button class="btn btn-primary" data-toggle="modal" data-target="#modalInputAsset"><i class="fas fa-plus" style="margin-top: 3px;"></i><span>Input aset</span></button>
-                            <button class="btn btn-success" id="btn-ajukan"><i class="fas fa-check" style="margin-top: 3px;"></i><span>Ajukan</span></button>
                         </div>`
+            } else {
+                actions = `<div class="asset-action">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#modalInputAsset"><i class="fas fa-plus" style="margin-top: 3px;"></i><span>Input aset</span></button>
+                            <button class="btn btn-success" data-toggle="modal" data-target="#modalPengajuan"><i class="fas fa-check" style="margin-top: 3px;"></i><span>Ajukan</span></button>
+                        </div>`
+            }
 
             $('#btn-add-vendor').hide()
         } else if (res.status == "pengajuan") {
@@ -271,6 +277,30 @@ $('#btn-delete-vendor').on('click', function(){
         })
         $('#modalDeleteVendor').modal('hide')
         $('#btn-delete-vendor').removeAttr('disabled')
+        toastr.option = {
+            "timeout": "5000"
+        }
+        toastr["success"](res.message)
+    })
+})
+
+$('#btn-ajukan-pengadaan-aset').on('click', function(){
+    $(this).attr('disabled', true)
+    let params = {
+        "periode": $('#periode').val(),
+        "semester": $('#semester').val(),
+    }
+
+    ajaxRequest.post({
+        "url": "/pengadaan-asset/pengajuan/send",
+        "data": params
+    }).then(res => {
+        getAsset({
+            "periode": $('#periode').val(),
+            "semester": $('#semester').val(),
+        })
+        $('#modalPengajuan').modal('hide')
+        $('#btn-ajukan-pengadaan-aset').removeAttr('disabled', true)
         toastr.option = {
             "timeout": "5000"
         }

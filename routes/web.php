@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MasterController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -44,8 +45,9 @@ Route::middleware(['auth', 'adminRole'])->group(function () {
     Route::get('/pengadaan-asset/delete/{id}', [WebController::class, 'pengadaan_asset_delete']);
     Route::post('/pengadaan-asset/vendor/input', [WebController::class, 'pengadaan_asset_vendor_input']);
     Route::get('/pengadaan-asset/vendor/delete/{id}', [WebController::class, 'pengadaan_asset_vendor_delete']);
+    Route::post('/pengadaan-asset/pengajuan/send', [WebController::class, 'pengadaan_asset_pengajuan']);
 
-    Route::get('/penilaian-kinerja', function () {
+    Route::get('/penilaian-vendor', function () {
         return view('penilaian-kinerja');
     });
 
@@ -74,15 +76,25 @@ Route::middleware(['auth', 'adminRole'])->group(function () {
     Route::post('/penilaian-karyawan/update', [WebController::class, 'update_penilaian_karyawan']);
 
     Route::post('/normalisasi-penilaian-karyawan/get', [WebController::class, 'get_normalisasi_penilaian_karyawan']);
-    Route::post('/penilaian-karyawan/final-result/get', [WebController::class, 'get_final_result']);
-
-    Route::get('/hasil', function () {
-        return view('hasil');
-    });
 });
 
 Route::middleware(['auth', 'masterRole'])->group(function () {
     Route::get('/master/dashboard', function () {
         return view('master.dashboard');
+    });
+    Route::get('/master/pengajuan-aset', function () {
+        return view('master.pengajuan-asset');
+    });
+    Route::get('/master/pengajuan-asset/get', [MasterController::class, 'get_pengajuan']);
+    Route::post('/master/pengajuan-asset/asset/get', [MasterController::class, 'get_pengajuan_asset']);
+    Route::post('/master/pengajuan-asset/terima', [MasterController::class, 'terima_pengajuan']);
+    Route::post('/master/pengajuan-asset/tolak', [MasterController::class, 'tolak_pengajuan']);
+});
+
+Route::middleware('auth')->group(function () {
+    Route::post('/penilaian-karyawan/final-result/get', [WebController::class, 'get_final_result']);
+
+    Route::get('/hasil', function () {
+        return view('hasil');
     });
 });

@@ -1,1 +1,4 @@
-{{ 'Master Role' }}
+@extends('layouts.master')
+@section('content')
+    
+@endsection

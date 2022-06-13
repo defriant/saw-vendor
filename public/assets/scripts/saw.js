@@ -39,38 +39,68 @@ $('#periode, #semester').on('change', function(){
 })
 
 function getFinalResult(params) {
-    $('#hasil-loader').html(`<div class="loader4"></div>
-                            <h5 style="margin-top: 2.5rem">Membuat peringkat</h5>`)
-    $('#hasil-loader').show()
-    $('#table-hasil-penilaian').hide()
-    $('#hasil-chart').hide()
-    $('#btn-print-hasil').hide()
+    $('#penilaian').html(`<div class="loader">
+                                <div class="loader4"></div>
+                                <h5 style="margin-top: 2.5rem">Membuat peringkat</h5>
+                            </div>`)
+    // $('#hasil-loader').show()
+    // $('#table-hasil-penilaian').hide()
+    // $('#hasil-chart').hide()
+    // $('#btn-print-hasil').hide()
     $.ajax({
         type: 'post',
         url: '/penilaian-karyawan/final-result/get',
         data: params,
         success: function (result) {
-            $('#btn-print-hasil').show()
-            $('#tbody-hasil').empty()
-            let no = 1;
-            $.each(result, function (i, v) {
-                $('#tbody-hasil').append(`<tr>
-                                                <td>${no}</td>
-                                                <td>${v.nama}</td>
-                                                <td>${v.nilai}</td>
-                                            </tr>`)
-                no = no + 1;
-            })
+            if (result.length > 0) {
+                $('#penilaian').html(`<div class="row">
+                                            <div class="col-md-4" style="margin-top: 3rem; margin-bottom: 3rem">
+                                                <table class="table table-bordered" id="table-hasil-penilaian">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="width: 15%">No.</th>
+                                                            <th>Karyawan</th>
+                                                            <th>Nilai</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="tbody-hasil">
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <canvas id="hasil-chart"></canvas>
+                                            </div>
+                                            <br>
+                                        </div>`)
 
-            $('#hasil-loader').empty()
-            $('#hasil-loader').hide()
-            $('#table-hasil-penilaian').show()
-            $('#hasil-chart').show()
-
-            if (chartHasilSet == false) {
-                createChartHasil(result)
+                $('#btn-print-hasil').show()
+                $('#tbody-hasil').empty()
+                let no = 1;
+                $.each(result, function (i, v) {
+                    $('#tbody-hasil').append(`<tr>
+                                                    <td>${no}</td>
+                                                    <td>${v.nama}</td>
+                                                    <td>${v.nilai}</td>
+                                                </tr>`)
+                    no = no + 1;
+                })
+    
+                $('#hasil-loader').empty()
+                $('#hasil-loader').hide()
+                $('#table-hasil-penilaian').show()
+                $('#hasil-chart').show()
+    
+                if (chartHasilSet == false) {
+                    createChartHasil(result)
+                } else {
+                    updateChartHasil(chartHasil, result)
+                }
             } else {
-                updateChartHasil(chartHasil, result)
+                $('#penilaian').html(`<div class="loader" id="hasil-loader">
+                                            <i class="fas fa-ban" style="font-size: 5rem; opacity: .5"></i>
+                                            <h5 style="margin-top: 2.5rem; opacity: .75">Penilaian tahun ${params.periode} semester ${params.semester} belum dibuat</h5>
+                                        </div>`)
             }
         }
     })

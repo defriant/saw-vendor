@@ -82,12 +82,20 @@
                                 <a href="/sub-kriteria" class="{{ Request::is('sub-kriteria') ? 'active' : '' }}"><i class="fal fa-tasks"></i> <span>Sub Kriteria</span></a>
                             </li> --}}
                             <li>
-                                <a href="/penilaian-kinerja" class="{{ Request::is('penilaian-kinerja') ? 'active' : '' }}"><i class="fal fa-chart-line"></i> <span>Penilaian Kinerja</span></a>
-                            </li>
-                            <li>
-                                <a href="/hasil" class="{{ Request::is('hasil') ? 'active' : '' }}"><i class="fal fa-chart-line"></i> <span>Hasil</span></a>
+                                <a href="/penilaian-vendor" class="{{ Request::is('penilaian-vendor') ? 'active' : '' }}"><i class="fal fa-chart-line"></i> <span>Penilaian Vendor</span></a>
                             </li>
                         @endif
+                        @if (Auth::user()->role == "master")
+                            <li>
+                                <a href="/master/dashboard" class="{{ Request::is('master/dashboard') ? 'active' : '' }}"><i class="lnr lnr-home"></i> <span>Dashboard</span></a>
+                            </li>
+                            <li>
+                                <a href="/master/pengajuan-aset" class="{{ Request::is('master/pengajuan-aset') ? 'active' : '' }}"><i class="lnr lnr-home"></i> <span>Pengajuan Aset</span></a>
+                            </li>
+                        @endif
+                        <li>
+                            <a href="/hasil" class="{{ Request::is('hasil') ? 'active' : '' }}"><i class="fal fa-chart-line"></i> <span>Hasil Penilaian</span></a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -126,7 +134,7 @@
         <script src="{{ asset('assets/scripts/kriteria.js') }}"></script>
     @elseif (Request::is('sub-kriteria'))
         <script src="{{ asset('assets/scripts/sub-kriteria.js') }}"></script>
-    @elseif (Request::is('penilaian-kinerja'))
+    @elseif (Request::is('penilaian-vendor'))
         <script src="{{ asset('assets/scripts/penilaian-karyawan.js') }}"></script>
     @elseif (Request::is('hasil'))
         <script src="{{ asset('assets/scripts/saw.js') }}"></script>
@@ -134,6 +142,11 @@
     @if (Request::is('pengadaan-asset'))
         <script src="{{ asset('assets/scripts/pengadaan-asset.js') }}"></script>
     @endif
+
+    @if (Request::is('master/pengajuan-aset'))
+    <script src="{{ asset('assets/scripts/master/pengajuan-asset.js') }}"></script>
+    @endif
+
     @yield('scripts')
 </body>
 
