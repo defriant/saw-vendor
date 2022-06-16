@@ -56,8 +56,8 @@ $('#periode, #semester').on('change', function(){
             $('#thead-penilaian').empty()
             $('#thead-normalisasi-penilaian').empty()
         
-            $('#thead-penilaian').append(`<th>Karyawan</th>`)
-            $('#thead-normalisasi-penilaian').append(`<th>Karyawan</th>`)
+            $('#thead-penilaian').append(`<th>Vendor</th>`)
+            $('#thead-normalisasi-penilaian').append(`<th>Vendor</th>`)
             $.each(result.data, function(i, v){
                 $('#thead-penilaian').append(`<th>${v.nama}</th>`)
                 $('#thead-normalisasi-penilaian').append(`<th>${v.nama}</th>`)
@@ -188,11 +188,11 @@ function getUpdatePenilaianKaryawan() {
                                                                     <div class="modal-body">
                                                                         <div class="row">
                                                                             <div class="col-sm-12 col-md-6" style="margin-bottom: 1.25rem">
-                                                                                <p>ID Karyawan</p>
+                                                                                <p>ID Vendor</p>
                                                                                 <input type="text" id="penilaian_id_karyawan" class="form-control" disabled>
                                                                             </div>
                                                                             <div class="col-sm-12 col-md-6" style="margin-bottom: 1.25rem">
-                                                                                <p>Nama Karyawan</p>
+                                                                                <p>Nama Vendor</p>
                                                                                 <input type="text" id="penilaian_nama_karyawan" class="form-control" disabled>
                                                                             </div>
                                                                         </div>

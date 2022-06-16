@@ -32,8 +32,8 @@
 					<div class="left">
 						<div class="content">
 							<div class="header">
-								<div class="logo text-center"><img src="{{ asset('assets/img/1640948278560.png') }}" class="login-logo"></div>
-								<p class="lead">Login Admin</p>
+								<div class="logo text-center"><img src="{{ asset('assets/img/smk6.png') }}" class="login-logo"></div>
+								<p class="lead">Login to Your Account</p>
 							</div>
 							<form class="form-auth-small" method="POST" action="/login-attempt">
 								{{ csrf_field() }}

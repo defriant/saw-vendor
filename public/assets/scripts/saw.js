@@ -59,7 +59,7 @@ function getFinalResult(params) {
                                                     <thead>
                                                         <tr>
                                                             <th style="width: 15%">No.</th>
-                                                            <th>Karyawan</th>
+                                                            <th>Vendor</th>
                                                             <th>Nilai</th>
                                                         </tr>
                                                     </thead>

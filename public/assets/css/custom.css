@@ -14,7 +14,9 @@
 }
 
 .brand {
-    width: 177px;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    width: 173px !important;
 }
 
 .login-failed-message {

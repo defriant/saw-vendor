@@ -64,13 +64,7 @@ class WebController extends Controller
 
     public function dashboard()
     {
-        $karyawan = Karyawan::all();
-        $karyawan = count($karyawan);
-
-        $kriteria = Kriteria::all();
-        $kriteria = count($kriteria);
-
-        return view('dashboard', compact('karyawan', 'kriteria'));
+        return view('dashboard');
     }
 
     public function pengadaan_asset()
